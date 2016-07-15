@@ -1,0 +1,66 @@
+﻿{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+<!-- Header开始 头部直接用标签，可以直接定义文字居中等类型-->
+<header id="home" class="text-center" name="home">
+  <div class="intro-text">
+    <h1>这里是Tony的小博客</h1><br />
+    <p>基于bootstrap的首次探索开发</p><br /><br />
+    <a href="#article-section"><button type="button" class="btn btn-primary btn-lg">随便看看吧</button></a>
+  </div>
+</header>
+<!-- Header结束 -->
+<!-- article-section -->
+<div class="container" id="article-section" style="min-height: 750px;">
+<!-- row就是一个默认的12格的网格，底下的按照父元素来计算网格-->	
+<!-- lg-md-sm-xs 大/中/小/极小占格子-->
+<!-- data存放数据与bootstrap无关只是个人用法-->
+<!-- 这里注意一点，在div=row下似乎不能直接取到子元素div来append-->
+<nav class="navbar list_nav">
+<span class="pull-left col-lg-3 col-md-4 col-sm-12 col-xs-12 input-group select_nav">
+<input type="text" class="form-control search_keyword" placeholder="输入关键词:如jquery">
+<span class="input-group-btn">
+<button class="btn btn-default search_btn" type="button">确定</button></span>
+</span>
+<span class="pull-right select_nav">
+<a class="active_nav" data-name="all" href="javascript:;">杂烩|</a>
+<a data-name="time" href="javascript:;">时间|</a>
+</span>
+</nav>
+<nav class="navbar btn_nav">
+<span class="pull-left col-lg-3 col-md-4 col-sm-12 col-xs-12">
+<button class="btn btn-default back_btn" type="button">退出全文</button>
+</span>
+</nav>
+  <div class="row">
+  	<div class="sort_div">
+  	{% for post in blog_list %}
+  	<div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" data-time="{{ post.timestamp | date:"y-m-d" }}" data-search="{{ post.title }}">
+  	  <div class="article_topic">	
+  	  <h4 class="text-center"><a class="show_all" href="javasrcipt:;"><strong>{{ post.title }}</strong></a></h4>
+        <p class="text-right" data- style="color: green;padding-right: 15px;">{{ post.timestamp | date:"y-m-d"}}</p>
+        <p style="text-indent:2em;padding: 0 15px;">{{ post.body }}</p>
+        <div class="float_img"></div>
+  	  </div>
+  	</div>  	
+  	 {% endfor %} 
+  	 </div>
+  	 <div class="tcdPageCode"></div>	
+</div>
+</div>
+<div class="container" id="about-section">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="container">
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-left">
+			<img class="img-responsive img-circle" src="{%static "img/doge1.jpg" %}">
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-left pull-right">
+			<p class="text-center">深大大四小伙子一枚，<br /><br />熟悉HTML,CSS,JS,php.<br /><br />熟悉jquery,YII2.<br /><br />正在学习python(Django),bootstrap.<br /><br />积极向上中，目前职业规划为前端工程师。</p>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- article-section结束-->  
+  {% endblock %}

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TonyBlog</title>
+      {% load staticfiles %}
+ <!-- 引入bootstrap样式 -->
+<link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet"> 
+<body>
+<!--导航开始-->
+<nav id="menu" class="navbar navbar-default navbar-fixed-top">
+  <div class="container"> 
+    <div class="navbar-header">
+    <!-- 自适应隐藏导航展开按钮 data-toggle定义可以切换标题 data-target是获取对应id的内容-->
+    <!-- 加上 sr-only 的意义就在于能保证屏幕阅读器正确读取且不会影响 UI 的视觉呈现。 -->
+    <!-- icon-bar就是一个横杠. -->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-content">
+      <span class="sr-only">Toggle navigation</span> 
+      <span class="icon-bar"></span> 
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+    <!-- navbar-brand就是nav中一个大一号的 -->
+      <a class="navbar-brand" href="#">TonyBlog</a>
+      </div>
+    <!-- 正常的导航内容 href中可以加入id 可以跳转到id所在位置-->
+    <div class="collapse navbar-collapse" id="navbar-collapse-content">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#article-section" class="page-scroll">文章</a></li>
+        <li><a href="#about-section" class="page-scroll">关于我</a></li>
+        <li><a href="#footer" class="page-scroll">联系我</a></li>
+      </ul>
+    </div>
+    <!-- 正常的导航内容结束 --> 
+  </div>
+  <!-- container居中结束 --> 
+</nav>
+<!--导航结束-->
+        {% block content %}
+        {% endblock %}
+
+ <!--footer开始 -->
+
+<nav id="footer" class="navbar navbar-default">
+  <div class="container">
+    <div class="pull-left">
+      <div class="none"></div>
+      <p class="text-primary">Copyright &copy; 2015 TonyBlog.Power by Django&bootstrap</p>
+    </div>
+    <div class="pull-right">
+        <div class="none"></div>
+        <p class="text-primary" >联系我戳这里</p>
+        <div class="my_weixin">
+        <img class="rwm" src="{%static "img/ewm.png" %}" />
+        <p class="text-primary text-center">我的微信二维码</p>
+        </div>
+    </div>
+  </div>
+</nav>
+<!--footer结束 -->     
+    <!-- 引入bootstrap的jquery -->
+    <script src="{% static "js/jquery2.1.min.js" %}"></script>
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
+    <!-- 引入分页插件的js-->
+    <script src="{% static "js/jquery.page.js" %}"></script>
+    <!-- 引入自己的jquery -->
+    <script src="{% static "js/tonyblog.js" %}"></script>
+    <!-- bootstrap的js插件 -->
+    <script src="{% static "js/bootstrap.min.js" %}"></script>  
+</body>
+</head>      
+</html>
